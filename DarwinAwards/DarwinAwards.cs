@@ -20,7 +20,7 @@ namespace DarwinAwards;
 public class DarwinAwards : BaseUnityPlugin
 {
 	private const string ModName = "Darwin Awards";
-	private const string ModVersion = "1.0.6";
+	private const string ModVersion = "1.0.7";
 	private const string ModGUID = "org.bepinex.plugins.darwinawards";
 
 	private static string configDir => Paths.ConfigPath;
@@ -91,8 +91,7 @@ public class DarwinAwards : BaseUnityPlugin
 
 	private class ConfigurationManagerAttributes
 	{
-		[UsedImplicitly]
-		public bool? Browsable = false;
+		[UsedImplicitly] public bool? Browsable = false;
 	}
 
 	public void Awake()
@@ -207,49 +206,59 @@ public class DarwinAwards : BaseUnityPlugin
 						deathTypes.Add("death by creature");
 					}
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_blunt > 0)
 				{
 					deathTypes.Add("death by blunt");
 					deathTypes.Add("death by physical");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_pierce > 0)
 				{
 					deathTypes.Add("death by pierce");
 					deathTypes.Add("death by physical");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_slash > 0)
 				{
 					deathTypes.Add("death by slash");
 					deathTypes.Add("death by physical");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_fire > 0)
 				{
 					deathTypes.Add("death by fire");
 					deathTypes.Add("death by elemental");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_frost > 0)
 				{
 					deathTypes.Add("death by frost");
 					deathTypes.Add("death by elemental");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_lightning > 0)
 				{
 					deathTypes.Add("death by lightning");
 					deathTypes.Add("death by elemental");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_damage.m_poison > 0)
 				{
 					deathTypes.Add("death by poison");
 					deathTypes.Add("death by elemental");
 				}
+
 				if (SaveCauseOfDeath.deathHit.m_skill == Skills.SkillType.WoodCutting)
 				{
 					deathTypes.Add("death by tree");
 				}
+
 				if (SetGravityFlag.fallDamageTaken)
 				{
 					deathTypes.Add("death by gravity");
 				}
+
 				if (SetFreezingFlag.freezingDamageTaken)
 				{
 					deathTypes.Add("death by frost");
@@ -342,7 +351,9 @@ public class DarwinAwards : BaseUnityPlugin
 		public string category = null!;
 		public string text = null!;
 
-		public DeathText() { }
+		public DeathText()
+		{
+		}
 	}
 
 	private static DeathText getRandomText(params string[] categories) => selectRandomText(listAllTexts(categories).Where(t => !t.text.Contains("{enemy}")).ToList());
@@ -361,6 +372,7 @@ public class DarwinAwards : BaseUnityPlugin
 		{
 			possibleTexts.AddRange(generalTexts.Select(t => new DeathText { category = "general", text = t }));
 		}
+
 		foreach (string s in categories)
 		{
 			if (deathTextDict.TryGetValue(s, out List<string> texts))

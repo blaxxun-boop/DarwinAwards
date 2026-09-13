@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DarwinAwards")]
-[assembly: AssemblyDescription("https://valheim.thunderstore.io/package/Smoothbrain/DarwinAwards")]
+[assembly: AssemblyDescription("https://valheim.hexium.gg/mods/Smoothbrain/DarwinAwards")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DarwinAwards")]
